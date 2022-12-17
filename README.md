@@ -1,2 +1,2 @@
-# hibernia_crm
- 
+# HiberniaCRM
+Тестовая версия CRM для школы ирландских танцев Hibernia

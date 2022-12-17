@@ -2,16 +2,18 @@
   <header class="header">
     <div class="header-content">
       <div class="header-logo">
-      <img class="logo" src="@/assets/HiberniaLogo.png" alt="logo"/>
+        <a href="https://www.hiberniadance.ru/">
+          <img class="logo" src="@/assets/HiberniaLogo.png" alt="logo"/>
+        </a>
       <h2 class="header-title"
           style="margin: 1rem">
         Hibernia CRM</h2>
       </div>
       <div class="topnav-links">
-        <a class="topnav-links-btn" href="#">Учет занятий</a>
-        <a class="topnav-links-btn" href="#">Группы</a>
-        <a class="topnav-links-btn" href="#">Концерты</a>
-        <a class="topnav-links-btn" href="#">Костюмы</a>
+        <router-link to="/accounting">Учет занятий</router-link>
+        <router-link to="/groups">Группы</router-link>
+        <router-link to="/concerts">Концерты</router-link>
+        <router-link to="/costumes">Костюмы</router-link>
       </div>
       <div class="topnav-icons">
         <a href="#"><i class="fas fa-user"></i></a>

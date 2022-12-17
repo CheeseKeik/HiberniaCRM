@@ -1,9 +1,8 @@
 <template>
   <div class="layout">
-    <header-content/>
+    <header-content v-if="loggedIn"/>
     <main class="layout-content">
-      <div id="box"></div>
-      <h1>Content</h1>
+      <!--TODO доделать компоненты-->
       <router-view/>
     </main>
     <footer-content/>
@@ -16,6 +15,12 @@ import FooterContent from "@/components/FooterContent.vue";
 
 export default {
   name: "layout",
-  components: {FooterContent, HeaderContent}
+  components: {FooterContent, HeaderContent},
+  //TODO: Добавить проверку на авторизацию и корректное отображение компонентов
+  data() {
+    return {
+      loggedIn: false
+    }
+  },
 }
 </script>

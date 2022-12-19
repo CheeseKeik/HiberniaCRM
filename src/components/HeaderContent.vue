@@ -16,7 +16,8 @@
         <router-link to="/costumes">Костюмы</router-link>
       </div>
       <div class="topnav-icons">
-        <a href="#"><i class="fas fa-user"></i></a>
+        <router-link to="/students"><i v-if="role !== 'pupil'" class="fas fa-users"></i></router-link>
+        <router-link to="/profile"><i class="fas fa-user"></i></router-link>
         <button id="logOutBtn" @click="logOut"><i class="fas fa-sign-out-alt"></i></button>
       </div>
     </div>
@@ -29,13 +30,22 @@ import router from "@/router";
 
 export default {
   name: "header-content",
+  data() {
+    return {
+      role: localStorage.getItem("role")
+    }
+  },
 
   methods:{
     async logOut(){
       try {
-        await axios.get(import.meta.env.VUE_APP_API + '/logout');
+        //пока не работает
+        //await axios.get(import.meta.env.VITE_APP_API + '/logout');
         localStorage.removeItem('loggedIn');
-        await router.push({name: 'auth'})
+        localStorage.removeItem('role');
+        localStorage.removeItem('username');
+        this.$store.commit('setLoggedIn', false);
+        await router.push({name: 'authentication'})
       } catch (e) {
         console.log(e)
         alert('Ошибка при выходе из системы')

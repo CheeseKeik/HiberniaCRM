@@ -39,7 +39,7 @@ export default {
 
     async login(){
       try{
-        const response = await axios.post(import.meta.env.VUE_APP_API + '/login', {
+        const response = await axios.post(import.meta.env.VITE_APP_API + '/login', {
           username: this.username,
           password: this.password
         });
@@ -48,6 +48,8 @@ export default {
         // чтобы не отображать header на страницах и переходим на страницу accounting
         this.$store.commit('setLoggedIn', true);
         localStorage.setItem('loggedIn', 'true');
+        localStorage.setItem('role', response.data.role);
+        localStorage.setItem('username', this.username);
         this.error = false;
         await router.push({name: 'accounting'})
 
@@ -62,7 +64,7 @@ export default {
 
     //Проверка работоспособности API
     async test(){
-      const response = await axios.get(import.meta.env.VUE_APP_API + '/status');
+      const response = await axios.get(import.meta.env.VITE_APP_API + '/status');
       console.log(response.data);
     }
   }

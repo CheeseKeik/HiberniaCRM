@@ -4,6 +4,8 @@ import Groups from "@/components/Groups.vue";
 import Concerts from "@/components/Concerts.vue";
 import Costumes from "@/components/Costumes.vue";
 import AuthPage from "@/components/AuthPage.vue";
+import Students from "@/components/Students.vue";
+import Profile from "@/components/Profile.vue";
 
 const routes = [
     {
@@ -34,6 +36,16 @@ const routes = [
         path: "/costumes",
         name: "costumes",
         component: Costumes
+    },
+    {
+        path: "/students",
+        name: "students",
+        component: Students
+    },
+    {
+        path: "/profile/",
+        name: "profile",
+        component: Profile
     }
 ];
 

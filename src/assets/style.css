@@ -82,16 +82,17 @@
 .topnav-icons {
   display: flex;
 }
-.topnav-icons a {
+.topnav-icons a, #logOutBtn {
   color: var(--white-plain);
   text-align: center;
   text-decoration: none;
   font-size: 1.2rem;
   margin-left: 1rem;
   padding: 0.5rem 1rem;
-  border-color: var(--green-alt);
+  background-color: transparent;
+  border: none;
 }
-.topnav-icons a:hover {
+.topnav-icons a:hover, #logOutBtn:hover {
   color: var(--orange-plain);
 }
 
@@ -102,12 +103,8 @@
 .app{
   margin: 50px;
 }
-.body{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin: 1rem;
+body{
+  background-color: var(--white-soft);
 }
 .layout-content{
   margin: 1rem;
@@ -143,4 +140,75 @@ footer {
   color: var(--white-plain);
   font-size: 2rem;
   margin-left: 2rem;
+}
+
+/* Стиль страницы авторизации */
+.wrapper-auth-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+}
+#formContent {
+  border-radius: 1rem;
+  background-color: var(--green-plain);
+  padding: 2rem;
+  max-width: 25rem;
+  box-shadow: 0 2rem 2rem 0 rgba(0,0,0,0.3);
+  text-align: center;
+}
+.auth-title {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--black-mute);
+  margin-bottom: 1rem;
+}
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-style: solid;
+  border-color: #721c24;
+  padding: 0.5rem;
+  height: auto;
+  width: auto;
+  font-size: 20px;
+  border-radius: 0.5rem;
+}
+input[type=button], input[type=submit], input[type=reset]  {
+  background-color: var(--orange-plain);
+  border: none;
+  color: var(--white-soft);
+  padding: 15px 80px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 13px;
+  box-shadow: 0 1rem 1rem 0 rgba(var(--orange-plain), 0.5);
+  border-radius: 0.5rem;
+  margin: 1rem;
+}
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+  background-color: var(--orange-soft);
+}
+input[type=text], input[type=password] {
+  background-color: var(--white-soft);
+  border: none;
+  color: var(--black-soft);
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0.5rem;
+  width: 85%;
+  border-radius: 0.5rem;
+}
+input[type=text]:focus {
+  background-color: var(--white-plain);
+}
+input[type=text]::placeholder {
+  color: #cccccc;
 }

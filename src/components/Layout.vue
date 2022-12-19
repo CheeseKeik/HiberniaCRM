@@ -12,6 +12,7 @@
 <script>
 import HeaderContent from "@/components/HeaderContent.vue";
 import FooterContent from "@/components/FooterContent.vue";
+import store from "@/vuex-store";
 
 export default {
   name: "layout",
@@ -19,7 +20,11 @@ export default {
   //TODO: Добавить проверку на авторизацию и корректное отображение компонентов
   data() {
     return {
-      loggedIn: false
+    }
+  },
+  computed:{
+    loggedIn(){
+      return store.state.loggedIn
     }
   },
 }

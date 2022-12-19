@@ -17,14 +17,30 @@
       </div>
       <div class="topnav-icons">
         <a href="#"><i class="fas fa-user"></i></a>
-        <a href="#"><i class="fas fa-sign-out-alt"></i></a>
+        <button id="logOutBtn" @click="logOut"><i class="fas fa-sign-out-alt"></i></button>
       </div>
     </div>
   </header>
 </template>
 
 <script>
+import axios from "axios";
+import router from "@/router";
+
 export default {
-  name: "header-content"
+  name: "header-content",
+
+  methods:{
+    async logOut(){
+      try {
+        await axios.get(import.meta.env.VUE_APP_API + '/logout');
+        localStorage.removeItem('loggedIn');
+        await router.push({name: 'auth'})
+      } catch (e) {
+        console.log(e)
+        alert('Ошибка при выходе из системы')
+      }
+    }
+  }
 }
 </script>

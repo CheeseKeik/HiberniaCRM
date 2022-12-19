@@ -1,15 +1,25 @@
 import { createStore } from 'vuex'
 
 const store = createStore({
-    state () {
-        return {
-            count: 0
-        }
+    state: {
+        loggedIn: false,
+        role: null,
+    },
+    getters: {
+        getLoggedIn: (state) => state.loggedIn,
+        getRole: (state) => state.role
     },
     mutations: {
-        increment (state) {
-            state.count++
+        setLoggedIn(state, value) {
+            state.loggedIn = value
+        },
+        setRole(state, value) {
+            state.role = value
         }
+    },
+    actions: {
+    },
+    modules: {
     }
 })
 

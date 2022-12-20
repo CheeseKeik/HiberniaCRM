@@ -16,7 +16,7 @@
         <router-link to="/costumes">Костюмы</router-link>
       </div>
       <div class="topnav-icons">
-        <router-link to="/students"><i v-if="role !== 'pupil'" class="fas fa-users"></i></router-link>
+        <router-link v-if="role !== 'pupil'" to="/students"><i class="fas fa-users"></i></router-link>
         <router-link to="/profile"><i class="fas fa-user"></i></router-link>
         <button id="logOutBtn" @click="logOut"><i class="fas fa-sign-out-alt"></i></button>
       </div>

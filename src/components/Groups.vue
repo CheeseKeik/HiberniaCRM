@@ -2,13 +2,13 @@
   <div class="layout-content">
     <h1>Список групп</h1>
     <hr>
-    <div class="groups-content">
-      <div class="groups-list" v-for="group in groups" key="">
-        <h3 class="groups-header">{{group.name}}</h3>
+    <div class="default-content-box">
+      <div class="default-content-list" v-for="group in groups" key="">
+        <h2 class="default-content-header">{{group.name}}</h2>
         <br>
         <p>Адрес: {{group.address}}</p>
-        <hr class="groups-hr">
-        <h2 class="groups-header">Расписание:</h2>
+        <hr class="default-content-hr">
+        <h3 class="default-content-header">Расписание:</h3>
         <ul class="group-list" style="margin-top: 0.5rem">
           <li class="groups-list-item" v-for="schedule in group.schedule" :key="schedule.id">
             <p>{{schedule.weekday}} {{schedule.begin_time}} - {{schedule.end_time}}</p>
@@ -96,7 +96,6 @@ export default {
         };
         this.groups.push(unsortedGroup);
       }
-      console.log(this.groups)
     }
   },
   beforeMount() {

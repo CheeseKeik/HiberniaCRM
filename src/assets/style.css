@@ -110,7 +110,7 @@
   margin: 50px;
 }
 body{
-  background-color: var(--white-soft);
+  background-color: var(--white-mute);
   font-size: 18px;
 }
 .layout-content{
@@ -229,7 +229,7 @@ input[type=submit]:active {
 }
 
 /* Стиль страницы групп */
-.groups-content {
+.default-content-box {
   border-radius: 1rem;
   color: #181818;
   display: flex;
@@ -237,10 +237,10 @@ input[type=submit]:active {
   align-items: center;
   justify-content: center;
 }
-.groups-list{
+.default-content-list{
   border: groove;
   border-radius: 1rem;
-  background-color: var(--white-mute);
+  background-color: var(--white-soft);
   color: #181818;
   display: flex;
   flex-direction: column;
@@ -252,12 +252,12 @@ input[type=submit]:active {
   width: -moz-available;
   margin-top: 0.5rem;
 }
-.groups-hr {
+.default-content-hr {
   width: 100%;
   border-color: var(--white-mute);
   border-top: 0.1rem solid var(--green-alt);
 }
-.groups-header {
+.default-content-header {
   font-size: 1.5rem;
   font-weight: 500;
   text-align: left;
@@ -267,3 +267,21 @@ hr{
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
+/*Стиль профиля*/
+.profile-avatar {
+  width: 19rem;
+  height: 14rem;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 2rem;
+  border: solid 0.2rem var(--black-mute);
+  border-radius: 0.5rem;
+}
+/*Опциональная разметка. Без нее пока лучше*/
+/*.profile-grid {*/
+/*  display: flex;*/
+/*  flex-direction: row-reverse;*/
+/*  grid-template-columns: 1fr 2fr;*/
+/*  grid-gap: 2rem;*/
+/*}*/

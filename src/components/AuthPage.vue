@@ -46,13 +46,12 @@ export default {
         console.log(response);
         //Получаем ответ по апи, устанавливаем в sessionStorage переменную loggedIn в true,
         // чтобы не отображать header на страницах и переходим на страницу accounting
-        this.$store.commit('setLoggedIn', true);
-        localStorage.setItem('loggedIn', 'true');
         localStorage.setItem('role', response.data.role);
         localStorage.setItem('username', this.username);
         localStorage.setItem('token', response.data.message);
         this.error = false;
         await router.push({name: 'accounting'})
+        window.location.reload();
 
       }catch (response) {
         console.log(response);

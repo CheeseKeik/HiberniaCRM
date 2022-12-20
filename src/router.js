@@ -50,7 +50,7 @@ const routes = [
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory(import.meta.env.BASE_URL),
     routes
 })
 
@@ -59,9 +59,9 @@ router.beforeEach((to, from, next) => {
     const publicPages = ['/auth'];
     const authRequired = !publicPages.includes(to.path);
     // пока будет через sessionStorage, потом желательно бы переделать серез локал(?)
-    const loggedIn = localStorage.getItem('loggedIn');
+    const token = localStorage.getItem('token');
 
-    if (authRequired && !loggedIn) {
+    if (authRequired && !token) {
         return next({
             path: '/auth',
             query: { returnUrl: to.path }

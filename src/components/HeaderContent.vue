@@ -41,11 +41,11 @@ export default {
       try {
         //пока не работает
         //await axios.get(import.meta.env.VITE_APP_API + '/logout');
-        localStorage.removeItem('loggedIn');
+        localStorage.removeItem('token');
         localStorage.removeItem('role');
         localStorage.removeItem('username');
-        this.$store.commit('setLoggedIn', false);
-        await router.push({name: 'authentication'})
+        await router.push({name: 'authentication'});
+        window.location.reload();
       } catch (e) {
         console.log(e)
         alert('Ошибка при выходе из системы')

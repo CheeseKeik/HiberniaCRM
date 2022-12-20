@@ -50,6 +50,7 @@ export default {
         localStorage.setItem('loggedIn', 'true');
         localStorage.setItem('role', response.data.role);
         localStorage.setItem('username', this.username);
+        localStorage.setItem('token', response.data.message);
         this.error = false;
         await router.push({name: 'accounting'})
 

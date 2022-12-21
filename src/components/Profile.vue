@@ -7,13 +7,15 @@
     <hr>
     <div class="default-content-box">
       <div class="default-content-list" style="font-size: 20px"  v-if="role === 'pupil'">
-        <p>Возраст: {{profile[0].age}}</p>
+        <p>Возраст: {{profile[0].age}} лет</p>
         <p>Пол: {{profile[0].sex}}</p>
         <p>Статус: {{profile[0].status}}</p>
         <p>Группа: {{profile[0].group_name}}</p>
       </div>
       <div class="default-content-list" style="font-size: 20px"  v-if="role === 'teacher'">
-        <p>стаж: {{profile[0].experience}}</p>
+        <p>Возраст: {{profile[0].age}} лет</p>
+        <p>Пол: {{profile[0].sex}}</p>
+        <p>Стаж: {{profile[0].experience}} лет</p>
       </div>
     </div>
     </div>
@@ -49,21 +51,18 @@ export default {
 
     reformatProfileArray(element) {
       console.log(this.role === 'pupil')
+      const profileValues = {
+        full_name: element['full_name'],
+        age: element['age'],
+        sex: element['sex'],
+      }
       if (this.role === 'pupil'){
-        const profileValues = {
-          full_name: element['full_name'],
-          age: element['age'],
-          sex: element['sex'],
-          status: element['status'],
-          group_name: element['group_name'],
-        }
+        profileValues.status = element['status']
+        profileValues.group_name = element['group_name']
         this.profile.push(profileValues)
       }
       if (this.role === 'teacher') {
-        const profileValues = {
-          full_name: element['full_name'],
-          experience: element['experience'],
-        }
+        profileValues['experience'] = element['experience']
         this.profile.push(profileValues)
       }
     }

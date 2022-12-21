@@ -285,3 +285,26 @@ hr{
 /*  grid-template-columns: 1fr 2fr;*/
 /*  grid-gap: 2rem;*/
 /*}*/
+
+/* Стиль списка студентов */
+.student-header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.5rem;
+}
+#student-list-add {
+  background-color: var(--orange-plain);
+  /*border: solid 0.2rem var(--orange-plain);*/
+  border: none;
+  color: var(--white-soft);
+  padding: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  /*display: inline-block;*/
+  text-transform: uppercase;
+  font-size: 1rem;
+  box-shadow: 0 2rem 2rem 0 rgba(var(--black-mute), 0.5);
+  z-index: 10;
+  border-radius: 0.5rem;
+}

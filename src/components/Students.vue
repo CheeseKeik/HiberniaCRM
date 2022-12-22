@@ -1,4 +1,6 @@
 <template>
+  <students-add-modal v-if="showAddStudent" @close="showAddStudent = false"/>
+  <students-delete-modal v-if="showDeleteStudent" @close="showDeleteStudent = false" v-bind:full_name="full_name" v-bind:username="username"/>
   <div class="layout-content">
     <div class="student-header-container">
       <h1>Список студентов</h1>
@@ -9,7 +11,10 @@
     <hr>
     <div class="default-content-box">
       <div class="default-content-list" v-for="value in students" key="">
-        <h2 class="default-content-header">{{value.full_name}}</h2>
+        <div style="display: flex; justify-content: space-between">
+          <h2 class="default-content-header">{{ value.full_name }}</h2>
+          <button class="default-delete-button" @click="deleteStudent(value.full_name, value.username)">УДАЛИТЬ</button>
+        </div>
         <hr class="default-content-hr">
         <p>Возраст: {{value.age}}</p>
         <p>Пол: {{value.sex}}</p>
@@ -22,12 +27,19 @@
 
 <script>
 import axios from "axios";
+import StudentsAddModal from "@/components/StudentsAddModal.vue";
+import StudentsDeleteModal from "@/components/StudentsDeleteModal.vue";
 
 export default {
   name: "students",
+  components: {StudentsAddModal, StudentsDeleteModal},
   data() {
     return {
       students: [],
+      showAddStudent: false,
+      showDeleteStudent: false,
+      full_name: "",
+      username: ""
     }
   },
   methods: {
@@ -50,20 +62,17 @@ export default {
         sex: element['sex'],
         status: element['status'],
         group_name: element['group_name'],
+        username: element['username'],
       }
       this.students.push(studentItem)
     },
     addStudent() {
-      return;
-      axios.post(import.meta.env.VITE_APP_API + "/user/new", {
-      }, {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token")
-        }
-      }).then(r => {
-        console.log(r.data)
-      })
-          .catch(e => console.log(e))
+      this.showAddStudent = true
+    },
+    deleteStudent(full_name, username) {
+      this.full_name = full_name
+      this.username = username
+      this.showDeleteStudent = true
     }
   },
   beforeMount() {

@@ -4,7 +4,7 @@
     <div id="formContent">
       <form @submit.prevent="login">
         <div class="alert alert-danger" v-show="error">
-          <strong>Danger!</strong> {{errors}}
+          <strong>Внимание! </strong> {{errors}}
         </div>
         <input type="text"
                id="login"
@@ -38,7 +38,7 @@ export default {
   methods: {
 
     async login(){
-      try{
+      try {
         const response = await axios.post(import.meta.env.VITE_APP_API + '/login', {
           username: this.username,
           password: this.password
@@ -53,7 +53,7 @@ export default {
         await router.push({name: 'accounting'})
         window.location.reload();
 
-      }catch (response) {
+      } catch (response) {
         console.log(response);
         console.log('ERROR LOGIN', response)
         this.errors = response.message;
@@ -61,12 +61,19 @@ export default {
         localStorage.clear()
       }
     },
-
-    //Проверка работоспособности API
-    async test(){
-      const response = await axios.get(import.meta.env.VITE_APP_API + '/status');
-      console.log(response.data);
+    checkStatus() {
+      axios.get(import.meta.env.VITE_APP_API + '/status')
+          .then(r => r.data.status === 'ok' ? this.error = false : this.error = true)
+          .catch(() => {
+            this.errors = "Сервер недоступен";
+            this.error = true
+          })
     }
+  },
+  beforeMount() {
+    if (localStorage.getItem('token'))
+      return router.push({name: 'accounting'})
+    setInterval(this.checkStatus, 10000)
   }
 }
 </script>

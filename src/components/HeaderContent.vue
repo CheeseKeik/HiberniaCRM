@@ -39,8 +39,11 @@ export default {
   methods:{
     async logOut(){
       try {
-        //пока не работает
-        //await axios.get(import.meta.env.VITE_APP_API + '/logout');
+        await axios.get(import.meta.env.VITE_APP_API + '/logout', {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token")
+          }
+        });
         localStorage.removeItem('token');
         localStorage.removeItem('role');
         localStorage.removeItem('username');

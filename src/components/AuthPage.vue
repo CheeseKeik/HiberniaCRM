@@ -57,6 +57,8 @@ export default {
         console.log(response);
         console.log('ERROR LOGIN', response)
         this.errors = response.message;
+        if (response.response.status === 401)
+          this.errors = 'Неверный логин или пароль';
         this.error = true
         localStorage.clear()
       }

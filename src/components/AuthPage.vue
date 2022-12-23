@@ -44,7 +44,7 @@ export default {
           password: this.password
         });
         console.log(response);
-        //Получаем ответ по апи, устанавливаем в sessionStorage переменную loggedIn в true,
+        // Получаем ответ по апи, устанавливаем в sessionStorage переменную loggedIn в true,
         // чтобы не отображать header на страницах и переходим на страницу accounting
         localStorage.setItem('role', response.data.role);
         localStorage.setItem('username', this.username);
@@ -60,12 +60,11 @@ export default {
         if (response.response.status === 401)
           this.errors = 'Неверный логин или пароль';
         this.error = true
-        localStorage.clear()
       }
     },
     checkStatus() {
       axios.get(import.meta.env.VITE_APP_API + '/status')
-          .then(r => r.data.status === 'ok' ? this.error = false : this.error = true)
+          .then(r => r.data.message === 'OK' ? this.error = false : this.error = true)
           .catch(() => {
             this.errors = "Сервер недоступен";
             this.error = true
@@ -75,6 +74,7 @@ export default {
   beforeMount() {
     if (localStorage.getItem('token'))
       return router.push({name: 'accounting'})
+    this.checkStatus()
     setInterval(this.checkStatus, 10000)
   }
 }

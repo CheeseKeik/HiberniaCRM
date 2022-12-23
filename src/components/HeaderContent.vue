@@ -44,15 +44,17 @@ export default {
             Authorization: "Bearer " + localStorage.getItem("token")
           }
         });
-        localStorage.removeItem('token');
-        localStorage.removeItem('role');
-        localStorage.removeItem('username');
-        await router.push({name: 'authentication'});
-        window.location.reload();
       } catch (e) {
+        // Сделаем вид, что ошибки нет, если сервак умер :)
         console.log(e)
-        alert('Ошибка при выходе из системы')
       }
+      // Ну и позволим пользователю выйти вне зависимости от смерти сервака
+      // Иначе произойдёт софтлок
+      localStorage.removeItem('token');
+      localStorage.removeItem('role');
+      localStorage.removeItem('username');
+      window.location.reload();
+      await router.push({name: 'authentication'});
     }
   }
 }
